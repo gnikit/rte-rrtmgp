@@ -76,8 +76,7 @@ jobs:
       with:
         miniforge-version: latest
         activate-environment: rte_rrtmgp_test
-        environment-file: environment-noplots.yml
-        python-version: 3.11
+        environment-file: environment.yml
         auto-activate-base: false
         # Use the cache properly:
         use-only-tar-bz2: true
