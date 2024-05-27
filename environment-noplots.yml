@@ -5,6 +5,7 @@ name: rte_rrtmgp_test_noplots
 
 dependencies:
   - python=3.11
+  - numpy
   - netcdf4
   - xarray
   - dask
