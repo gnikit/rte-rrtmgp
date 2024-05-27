@@ -9,10 +9,6 @@ on:
     - documentation
   workflow_dispatch:
 
-defaults:
-  run:
-    # Enable Conda environment by using the login shell:
-    shell: bash -leo pipefail {0}
 
 jobs:
   CI:
