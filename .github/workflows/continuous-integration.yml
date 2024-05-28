@@ -56,11 +56,6 @@ jobs:
         repository: earth-system-radiation/rrtmgp-data
         path: rrtmgp-data
         ref: v1.8.1
-
-    - name: List Include paths of GFortran
-      run: |
-        echo | $FC -E -Wp,-v -
-
     #
     # Cache Conda packages
     #
