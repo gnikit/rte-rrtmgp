@@ -21,11 +21,13 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        fortran-compiler: [gfortran-10, gfortran-11, gfortran-12]
         fpmodel: [DP, SP]
+        toolchain:
+          - {compiler: gcc, version: 10}
+          - {compiler: gcc, version: 11}
+          - {compiler: gcc, version: 12}
     env:
       # Core variables:
-      FC: ${{ matrix.fortran-compiler }}
       FCFLAGS: "-ffree-line-length-none -m64 -std=f2008 -march=native -fbounds-check -fmodule-private -fimplicit-none -finit-real=nan -g -DRTE_USE_CBOOL -DRTE_USE_${{ matrix.fpmodel }}"
       # Make variables:
       RRTMGP_ROOT: ${{ github.workspace }}
@@ -53,6 +55,13 @@ jobs:
         repository: earth-system-radiation/rrtmgp-data
         path: rrtmgp-data
         ref: v1.8.1
+    
+    # Setup Fortran compiler
+    - uses: fortran-lang/setup-fortran@v1.6.1
+      id: setup-fortran
+      with:
+        compiler: ${{ matrix.toolchain.compiler }}
+        version: ${{ matrix.toolchain.version }}
     #
     # Cache Conda packages
     #
