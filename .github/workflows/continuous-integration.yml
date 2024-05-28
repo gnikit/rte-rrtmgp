@@ -94,7 +94,7 @@ jobs:
         echo "@@@@@@@@@@@@@@@: " $FCINCLUDE
         make -j4 tests
       env:
-        FCINCLUDE: -I $CONDA_PREFIX/include
+        FCINCLUDE: -I ${CONDA_PREFIX}/include
 
     #
     # Compare the results
