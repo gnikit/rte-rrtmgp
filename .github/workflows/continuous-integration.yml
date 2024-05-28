@@ -89,7 +89,12 @@ jobs:
     # Run examples and tests
     #
     - name: Build and run examples and tests
-      run: make -j4 tests
+      run: |
+        echo "@@@@@@@@@@@@@@@: " $FCINCLUDE
+        make -j4 tests
+      env:
+        FCINCLUDE: -I $CONDA_PREFIX/include
+
     #
     # Compare the results
     #
