@@ -95,6 +95,7 @@ jobs:
         make -j4 tests
       env:
         FCINCLUDE: -I ${CONDA_PREFIX}/include
+        LDFLAGS: -L ${CONDA_PREFIX}/lib
 
     #
     # Compare the results
