@@ -58,7 +58,6 @@ jobs:
     - name: List Include paths of GFortran
       run: |
         echo | $FC -E -Wp,-v -
-        find / -iname '*netcdf*.mod'
 
     #
     # Cache Conda packages
