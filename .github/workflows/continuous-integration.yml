@@ -9,10 +9,6 @@ on:
     - documentation
   workflow_dispatch:
 
-defaults:
-  run:
-    # Enable Conda environment by using the login shell:
-    shell: bash -leo pipefail {0}
 
 jobs:
   CI:
@@ -26,6 +22,16 @@ jobs:
           - {compiler: gcc, version: 10}
           - {compiler: gcc, version: 11}
           - {compiler: gcc, version: 12}
+        include:
+          - os: ubuntu-latest
+            shell: bash -leo pipefail {0}
+          - os: windows-latest
+            shell: msys -leo pipefail {0}
+
+    defaults:
+      run:
+        shell: ${{ matrix.toolchain.shell }}
+
     env:
       # Core variables:
       FCFLAGS: "-ffree-line-length-none -m64 -std=f2008 -march=native -fbounds-check -fmodule-private -fimplicit-none -finit-real=nan -g -DRTE_USE_CBOOL -DRTE_USE_${{ matrix.fpmodel }}"
