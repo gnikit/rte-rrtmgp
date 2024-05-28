@@ -30,7 +30,7 @@ jobs:
 
     defaults:
       run:
-        shell: ${{ matrix.toolchain.shell }}
+        shell: ${{ matrix.shell }}
 
     env:
       # Core variables:
