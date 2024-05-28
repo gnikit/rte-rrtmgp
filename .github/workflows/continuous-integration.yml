@@ -86,8 +86,7 @@ jobs:
       uses: conda-incubator/setup-miniconda@v3
       with:
         miniforge-version: latest
-        activate-environment: rte_rrtmgp_test
-        environment-file: environment.yml
+        environment-file: environment-ci.yml
         auto-activate-base: false
         # Use the cache properly:
         use-only-tar-bz2: true
