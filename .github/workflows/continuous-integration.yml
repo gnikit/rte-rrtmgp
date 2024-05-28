@@ -58,14 +58,7 @@ jobs:
     - name: List Include paths of GFortran
       run: |
         echo | $FC -E -Wp,-v -
-        locate netcdf.mod
-        find / -name 'netcdf.mod'
-
-    #
-    # Synchronize the package index
-    #
-    - name: Synchronize the package index
-      run: sudo apt-get update
+        find / -iname '*netcdf*.mod'
     #
     # Install NetCDF-Fortran (compatible with all compilers)
     #
