@@ -92,10 +92,10 @@ jobs:
         echo "@@@@@@@@@@@@@@@: " $LDFLAGS
         echo "@@@@@@@@@@@@@@@: " $LD_LIBRARY_PATH
         make -j4 tests
-      # env:
-      #   FCINCLUDE: -I ${CONDA_PREFIX}/include
-      #   LDFLAGS: -L ${CONDA_PREFIX}/lib
-      #   LD_LIBRARY_PATH: ${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
+      env:
+        FCINCLUDE: -I ${CONDA_PREFIX}/include
+        LDFLAGS: -L ${CONDA_PREFIX}/lib
+        LD_LIBRARY_PATH: ${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
 
     #
     # Compare the results
