@@ -88,15 +88,13 @@ jobs:
     #
     - name: Build and run examples and tests
       run: |
+        export FCINCLUDE="-I ${CONDA_PREFIX}/include"
+        export LDFLAGS="-L ${CONDA_PREFIX}/lib"
+        export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
         echo "@@@@@@@@@@@@@@@: " $FCINCLUDE
         echo "@@@@@@@@@@@@@@@: " $LDFLAGS
         echo "@@@@@@@@@@@@@@@: " $LD_LIBRARY_PATH
         make -j4 tests
-      env:
-        FCINCLUDE: -I ${CONDA_PREFIX}/include
-        LDFLAGS: -L ${CONDA_PREFIX}/lib
-        LD_LIBRARY_PATH: ${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
-
     #
     # Compare the results
     #
