@@ -59,11 +59,7 @@ jobs:
       run: |
         echo | $FC -E -Wp,-v -
         find / -iname '*netcdf*.mod'
-    #
-    # Install NetCDF-Fortran (compatible with all compilers)
-    #
-    - name: Install NetCDF-Fortran
-      run: sudo apt-get install libnetcdff-dev
+
     #
     # Cache Conda packages
     #
