@@ -75,6 +75,7 @@ jobs:
       with:
         miniforge-version: latest
         environment-file: environment-ci.yml
+        activate-environment: rte_rrtmgp_ci
         auto-activate-base: false
         # Use the cache properly:
         use-only-tar-bz2: true
