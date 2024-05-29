@@ -85,6 +85,14 @@ jobs:
       with:
         path: ~/conda_pkgs_dir
         key: conda-pkgs
+
+    - name: Check conda
+      run: |
+        conda info
+        conda list
+        conda env list
+        conda search netcdf-fortran --channel conda-forge
+        conda install -c conda-forge netcdf-fortran
     #
     # Set up Conda
     #
