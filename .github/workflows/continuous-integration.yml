@@ -131,7 +131,7 @@ jobs:
     - name: Build and run examples - ${{ runner.os }}
       if: runner.os == 'Windows'
       run: |
-        ROOT="C:/msys64/mingw64"
+        ROOT="/mingw64"
         NETCDF_LIB="${ROOT}/lib"
         NETCDF_INC="${ROOT}/include"
         find "${NETCDF_INC}" -type f -print
