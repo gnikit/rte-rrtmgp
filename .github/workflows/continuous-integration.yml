@@ -130,7 +130,7 @@ jobs:
           - {compiler: gcc, version: 11}
           - {compiler: gcc, version: 12}
         include:
-          - shell: "msys2 {0}"
+          - shell: "msys2 -el {0}"
     defaults:
       run:
         shell: ${{ matrix.shell }}
