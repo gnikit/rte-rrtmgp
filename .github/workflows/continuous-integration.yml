@@ -185,6 +185,7 @@ jobs:
 
 
     - name: Check conda
+      shell: pwsh
       run: |
         conda info
         conda list
