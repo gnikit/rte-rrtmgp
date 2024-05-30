@@ -97,6 +97,7 @@ jobs:
         environment-file: environment-ci.yml
         activate-environment: rte_rrtmgp_ci
         auto-activate-base: false
+        use-mamba: true
         # Use the cache properly:
         use-only-tar-bz2: ${{ matrix.use-cache }}
 
