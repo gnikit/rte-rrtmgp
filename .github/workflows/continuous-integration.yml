@@ -120,7 +120,7 @@ jobs:
     - name: Build and run examples - ${{ runner.os }}
       if: runner.os == 'Windows'
       run: |
-        ROOT=/c/msys64/mingw64
+        ROOT="/c/msys64/mingw64"
         export FCINCLUDE="-I ${ROOT}/include"
         export LDFLAGS="-L ${ROOT}/lib"
         export LD_LIBRARY_PATH=${ROOT}/lib:${LD_LIBRARY_PATH}
