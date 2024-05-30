@@ -120,9 +120,10 @@ jobs:
     - name: Build and run examples - ${{ runner.os }}
       if: runner.os == 'Windows'
       run: |
-        export FCINCLUDE="-I ${CONDA_PREFIX}/Library/include"
-        export LDFLAGS="-L ${CONDA_PREFIX}/Library/lib"
-        export LD_LIBRARY_PATH=${CONDA_PREFIX}/Library/lib:${LD_LIBRARY_PATH}
+        ROOT=/c/msys64/mingw64
+        export FCINCLUDE="-I ${ROOT}/include"
+        export LDFLAGS="-L ${ROOT}/lib"
+        export LD_LIBRARY_PATH=${ROOT}/lib:${LD_LIBRARY_PATH}
         make -j4 tests
     #
     # Compare the results
