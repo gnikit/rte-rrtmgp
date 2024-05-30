@@ -155,6 +155,12 @@ jobs:
         path: rrtmgp-data
         ref: v1.8.1
 
+    - uses: fortran-lang/setup-fortran@v1.6.1
+      id: setup-fortran
+      with:
+        compiler: ${{ matrix.toolchain.compiler }}
+        version: ${{ matrix.toolchain.version }}
+
     - name: Relax failure threshold for single precision
       if: matrix.fpmodel == 'SP'
       run: echo "FAILURE_THRESHOLD=3.5e-1" >> $GITHUB_ENV
