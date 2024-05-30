@@ -63,6 +63,12 @@ jobs:
         ls -l1F /mingw64/include
         echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 
+    - if: runner.os == 'Windows'
+      name: Debug
+      shell: cmd /C CALL {0}
+      run: >-
+        dir C:\msys64\mingw64 
+
     #
     # Relax failure thresholds for single precision
     #
