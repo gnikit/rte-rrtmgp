@@ -53,6 +53,20 @@ jobs:
           mingw-w64-x86_64-make
           mingw-w64-x86_64-netcdf-fortran
 
+    - if: runner.os == 'Windows'
+      name: Debug
+      run: |
+        ROOT="C:/msys64/mingw64"
+        NETCDF_LIB="${ROOT}/lib"
+        NETCDF_INC="${ROOT}/include"
+        echo "NETCDF_LIB: ${NETCDF_LIB}"
+        echo "NETCDF_INC: ${NETCDF_INC}"
+        echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        find "${ROOT}" -name "*netcdf.mod" f -print
+        echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        find "D:/msys64/mingw64" -type f -print
+        echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+
     #
     # Relax failure thresholds for single precision
     #
