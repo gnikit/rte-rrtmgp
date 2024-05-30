@@ -142,6 +142,7 @@ jobs:
         export LDFLAGS="-L ${NETCDF_LIB}"
         export LD_LIBRARY_PATH=${NETCDF_LIB}:${LD_LIBRARY_PATH}
         make -j4 tests
+      shell: bash -leo pipefail {0}
     #
     # Compare the results
     #
