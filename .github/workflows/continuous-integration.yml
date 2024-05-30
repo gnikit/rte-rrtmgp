@@ -27,7 +27,7 @@ jobs:
             shell: bash -leo pipefail {0}
             use-cache: true
           - os: windows-latest
-            shell: "msys2 -leo pipefail {0}"
+            shell: "msys2 -le {0}"
             use-cache: false
 
     defaults:
