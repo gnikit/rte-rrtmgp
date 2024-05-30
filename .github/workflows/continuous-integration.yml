@@ -135,7 +135,6 @@ jobs:
         NETCDF_LIB="${ROOT}/lib"
         NETCDF_INC="${ROOT}/include"
         find "${NETCDF_INC}" -name 'netcdf.mod'
-        ls -l1F "${NETCDF_INC}"
         ls -l1F C:/msys64/mingw64/include"
         echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 
