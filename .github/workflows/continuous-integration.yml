@@ -99,6 +99,21 @@ jobs:
         auto-activate-base: false
         # Use the cache properly:
         use-only-tar-bz2: ${{ matrix.use-cache }}
+
+    # Setup env variables if Linux and if Windows
+    - name: Setup env variables - ${{ runner.os }}
+      if: runner.os == 'Linux'
+      run: |
+        echo "FCINCLUDE=-I ${CONDA_PREFIX}/include" >> $GITHUB_ENV
+        echo "LDFLAGS=-L ${CONDA_PREFIX}/lib" >> $GITHUB_ENV
+        echo "LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}" >> $GITHUB_ENV
+    - name: Setup env variables
+      if: runner.os == 'Windows' - ${{ runner.os }}
+      run: |
+        echo "FCINCLUDE=-I C:\msys64\mingw64\include" >> $GITHUB_ENV
+        echo "LDFLAGS=-L =C:\msys64\mingw64\lib" >> $GITHUB_ENV
+        echo "LD_LIBRARY_PATH==C:\msys64\mingw64\lib:%LD_LIBRARY_PATH%" >> $GITHUB_ENV
+      
     #
     # Build libraries, examples and tests
     #
@@ -112,20 +127,21 @@ jobs:
     - name: Build and run examples and tests
       if: runner.os == 'Linux'
       run: |
-        export FCINCLUDE="-I ${CONDA_PREFIX}/include"
-        export LDFLAGS="-L ${CONDA_PREFIX}/lib"
-        export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
+        # export FCINCLUDE="-I ${CONDA_PREFIX}/include"
+        # export LDFLAGS="-L ${CONDA_PREFIX}/lib"
+        # export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
         make -j4 tests
 
     - name: Build and run examples - ${{ runner.os }}
       if: runner.os == 'Windows'
       run: >-
-        set ROOT=C:\msys64\mingw64
-        set NETCDF_LIB=%ROOT%\lib
-        set NETCDF_INC=%ROOT%\include
-        set FCINCLUDE=-I %NETCDF_INC%
-        set LDFLAGS=-L %NETCDF_LIB%
-        set LD_LIBRARY_PATH=%NETCDF_LIB%:%LD_LIBRARY_PATH%
+        # set ROOT=C:\msys64\mingw64
+        # set NETCDF_LIB=%ROOT%\lib
+        # set NETCDF_INC=%ROOT%\include
+        # set FCINCLUDE=-I %NETCDF_INC%
+        # set LDFLAGS=-L %NETCDF_LIB%
+        # set LD_LIBRARY_PATH=%NETCDF_LIB%:%LD_LIBRARY_PATH%
+
         make -j4 tests
         make check
       shell: cmd /C CALL {0}
