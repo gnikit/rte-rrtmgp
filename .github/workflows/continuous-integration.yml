@@ -135,6 +135,10 @@ jobs:
         NETCDF_LIB="${ROOT}/lib"
         NETCDF_INC="${ROOT}/include"
         find "${NETCDF_INC}" -name 'netcdf.mod'
+        ls -l1F "${NETCDF_INC}"
+        ls -l1F C:/msys64/mingw64/include"
+        echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+
         export FCINCLUDE="-I ${NETCDF_INC}"
         export LDFLAGS="-L ${NETCDF_LIB}"
         export LD_LIBRARY_PATH=${NETCDF_LIB}:${LD_LIBRARY_PATH}
