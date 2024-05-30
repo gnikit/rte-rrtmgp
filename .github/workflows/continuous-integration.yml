@@ -69,6 +69,12 @@ jobs:
       run: >-
         dir C:\msys64\mingw64 
 
+    - if: runner.os == 'Windows'
+      name: Debug where is make
+      shell: cmd /C CALL {0}
+      run: >-
+        where make
+
     #
     # Relax failure thresholds for single precision
     #
