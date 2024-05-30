@@ -148,7 +148,6 @@ jobs:
         set LDFLAGS=-L %ROOT%\lib
         set LD_LIBRARY_PATH=%ROOT%\lib:%LD_LIBRARY_PATH%
         make -j4 tests
-        make check
       shell: cmd /C CALL {0}
       # run: |
       #   ROOT="/mingw64"
@@ -165,5 +164,5 @@ jobs:
     #
     # Compare the results
     #
-    # - name: Compare the results
-    #   run: make -j4 check
+    - name: Compare the results
+      run: make -j4 check
