@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
         fpmodel: [DP, SP]
         toolchain:
           - {compiler: gcc, version: 10}
@@ -85,14 +85,6 @@ jobs:
       with:
         path: ~/conda_pkgs_dir
         key: conda-pkgs
-
-    - name: Check conda
-      run: |
-        conda info
-        conda list
-        conda env list
-        conda search netcdf-fortran --channel conda-forge
-        conda install -c conda-forge netcdf-fortran
     #
     # Set up Conda
     #
@@ -124,5 +116,83 @@ jobs:
     #
     # Compare the results
     #
+    - name: Compare the results
+      run: make -j4 check
+
+  CI-Windows:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fpmodel: [DP, SP]
+        toolchain:
+          - {compiler: gcc, version: 10}
+          - {compiler: gcc, version: 11}
+          - {compiler: gcc, version: 12}
+        include:
+          - shell: "msys2 {0}"
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+
+    env:
+      # Core variables:
+      FCFLAGS: "-ffree-line-length-none -m64 -std=f2008 -march=native -fbounds-check -fmodule-private -fimplicit-none -finit-real=nan -g -DRTE_USE_CBOOL -DRTE_USE_${{ matrix.fpmodel }}"
+      # Make variables:
+      RRTMGP_ROOT: ${{ github.workspace }}
+      RRTMGP_DATA: ${{ github.workspace }}/rrtmgp-data
+      RUN_CMD:
+      FAILURE_THRESHOLD: 7.e-4
+    steps:
+
+    - name: Check out code
+      uses: actions/checkout@v4
+
+    - name: Check out data
+      uses: actions/checkout@v4
+      with:
+        repository: earth-system-radiation/rrtmgp-data
+        path: rrtmgp-data
+        ref: v1.8.1
+
+    - name: Relax failure threshold for single precision
+      if: matrix.fpmodel == 'SP'
+      run: echo "FAILURE_THRESHOLD=3.5e-1" >> $GITHUB_ENV
+
+    - name: Setup msy2
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        path-type: inherit
+        install: >-
+          mingw-w64-x86_64-netcdf-fortran
+
+    - name: Set up Conda
+      uses: conda-incubator/setup-miniconda@v3
+      with:
+        miniforge-version: latest
+        environment-file: environment-ci-win.yml
+        activate-environment: rte_rrtmgp_ci
+        auto-activate-base: false
+        # Use the cache properly:
+        use-only-tar-bz2: true
+
+
+    - name: Check conda
+      run: |
+        conda info
+        conda list
+        conda env list
+        conda search netcdf-fortran --channel conda-forge
+
+    - name: Build libraries
+      run: |
+        $FC --version
+        make -j4 libs
+
+    - name: Build and run examples and tests
+      run: |
+        make -j4 tests
+
     - name: Compare the results
       run: make -j4 check
