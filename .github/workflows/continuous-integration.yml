@@ -62,7 +62,7 @@ jobs:
         echo "NETCDF_LIB: ${NETCDF_LIB}"
         echo "NETCDF_INC: ${NETCDF_INC}"
         echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-        find "${ROOT}" -name "*netcdf.mod" f -print
+        find "${ROOT}" -name "*netcdf.mod" -print
         echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
         find "D:/msys64/mingw64" -type f -print
         echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
