@@ -181,7 +181,7 @@ jobs:
         activate-environment: rte_rrtmgp_ci
         auto-activate-base: false
         # Use the cache properly:
-        use-only-tar-bz2: true
+        use-only-tar-bz2: false
 
 
     - name: Check conda
