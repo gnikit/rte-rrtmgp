@@ -184,13 +184,13 @@ jobs:
         use-only-tar-bz2: false
 
 
-    - name: Check conda
-      shell: pwsh
-      run: |
-        conda info
-        conda list
-        conda env list
-        conda search netcdf-fortran --channel conda-forge
+    # - name: Check conda
+    #   shell: pwsh
+    #   run: |
+    #     conda info
+    #     conda list
+    #     conda env list
+    #     conda search netcdf-fortran --channel conda-forge
 
     - name: Build libraries
       run: |
