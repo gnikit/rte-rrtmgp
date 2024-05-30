@@ -12,12 +12,14 @@ jobs:
 
     - name: Set environment variables
       run: |
-        echo MY_VARIABLE=my_value >> $env:GITHUB_ENV
-        echo ANOTHER_VARIABLE=another_value >> $env:GITHUB_ENV
-      shell: pwsh
+        set MY_VARIABLE=my_value
+        set ANOTHER_VARIABLE=another_value
+        echo MY_VARIABLE=my_value >> %GITHUB_ENV%
+        echo ANOTHER_VARIABLE=another_value >> %GITHUB_ENV%
+      shell: cmd
 
     - name: Print environment variables
       run: |
-        echo $env:MY_VARIABLE
-        echo $env:ANOTHER_VARIABLE
-      shell: pwsh
+        echo %MY_VARIABLE%
+        echo %ANOTHER_VARIABLE%
+      shell: cmd
