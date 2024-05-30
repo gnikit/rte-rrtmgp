@@ -55,16 +55,12 @@ jobs:
 
     - if: runner.os == 'Windows'
       name: Debug
+      shell: bash
       run: |
-        ROOT="C:/msys64/mingw64"
-        NETCDF_LIB="${ROOT}/lib"
-        NETCDF_INC="${ROOT}/include"
-        echo "NETCDF_LIB: ${NETCDF_LIB}"
-        echo "NETCDF_INC: ${NETCDF_INC}"
         echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-        find "${ROOT}" -name "*netcdf.mod" -print
+        find "C:/msys64" -name "netcdf.mod" -print
         echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-        find "D:/msys64/mingw64" "*netcdf.mod" -print
+        find "D:/msys64" "netcdf.mod" -print
         echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 
     #
