@@ -134,7 +134,7 @@ jobs:
         ROOT="/mingw64"
         NETCDF_LIB="${ROOT}/lib"
         NETCDF_INC="${ROOT}/include"
-        find "${NETCDF_INC}" -type f -print
+        find "${NETCDF_INC}" -name 'netcdf.mod'
         export FCINCLUDE="-I ${NETCDF_INC}"
         export LDFLAGS="-L ${NETCDF_LIB}"
         export LD_LIBRARY_PATH=${NETCDF_LIB}:${LD_LIBRARY_PATH}
