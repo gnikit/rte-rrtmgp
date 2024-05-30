@@ -121,10 +121,13 @@ jobs:
       if: runner.os == 'Windows'
       run: >-
         set ROOT=C:\msys64\mingw64
-        set FCINCLUDE=-I %ROOT%\include
-        set LDFLAGS=-L %ROOT%\lib
-        set LD_LIBRARY_PATH=%ROOT%\lib:%LD_LIBRARY_PATH%
+        set NETCDF_LIB=%ROOT%\lib
+        set NETCDF_INC=%ROOT%\include
+        set FCINCLUDE=-I %NETCDF_INC%
+        set LDFLAGS=-L %NETCDF_LIB%
+        set LD_LIBRARY_PATH=%NETCDF_LIB%:%LD_LIBRARY_PATH%
         make -j4 tests
+        make check
       shell: cmd /C CALL {0}
       # run: |
       #   ROOT="/mingw64"
