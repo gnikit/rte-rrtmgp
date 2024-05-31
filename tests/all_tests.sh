@@ -8,6 +8,11 @@ else
     # Linux/Unix commands
     echo "Running on Linux/Unix"
 fi
+echo "@@@@@::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::@"
+pwd
+echo "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
+ls -1F .
+echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 ./rte_optic_prop_unit_tests${EXT}
 ./rte_lw_solver_unit_tests${EXT}
 ./rte_sw_solver_unit_tests${EXT}
