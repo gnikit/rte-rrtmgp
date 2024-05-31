@@ -61,6 +61,9 @@ jobs:
         ls /c/msys64/mingw64/lib
         echo "#################################"
         find /c/msys64 -name netcdf.mod
+        echo "--------------------------------------"
+        pacman -Ql mingw-w64-x86_64-netcdf-fortran
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
     - name: Debug CMD shell
       if: runner.os == 'Windows'
