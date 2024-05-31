@@ -127,38 +127,8 @@ jobs:
     # Run examples and tests
     #
     - name: Build and run examples and tests
-      if: runner.os == 'Linux'
       run: |
-        # export FCINCLUDE="-I ${CONDA_PREFIX}/include"
-        # export LDFLAGS="-L ${CONDA_PREFIX}/lib"
-        # export LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
         make -j4 tests
-
-    - name: Build and run examples - ${{ runner.os }}
-      if: runner.os == 'Windows'
-      run: >-
-        # set ROOT=C:\msys64\mingw64
-        # set NETCDF_LIB=%ROOT%\lib
-        # set NETCDF_INC=%ROOT%\include
-        # set FCINCLUDE=-I %NETCDF_INC%
-        # set LDFLAGS=-L %NETCDF_LIB%
-        # set LD_LIBRARY_PATH=%NETCDF_LIB%:%LD_LIBRARY_PATH%
-
-        make -j4 tests
-        make check
-      shell: cmd /C CALL {0}
-      # run: |
-      #   ROOT="/mingw64"
-      #   NETCDF_LIB="${ROOT}/lib"
-      #   NETCDF_INC="${ROOT}/include"
-      #   find "${NETCDF_INC}" -name 'netcdf.mod'
-      #   ls -l1F C:/msys64/mingw64/include
-      #   echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-      #   export FCINCLUDE="-I ${NETCDF_INC}"
-      #   export LDFLAGS="-L ${NETCDF_LIB}"
-      #   export LD_LIBRARY_PATH=${NETCDF_LIB}:${LD_LIBRARY_PATH}
-      #   make -j4 tests
-      # shell: bash -leo pipefail {0}
     #
     # Compare the results
     #
