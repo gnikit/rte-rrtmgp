@@ -58,7 +58,7 @@ tests: rrtmgp_rfmip_lw rrtmgp_rfmip_sw \
 	$(RUN_CMD) ./rrtmgp_rfmip_sw 8 multiple_input4MIPs_radiation_RFMIP_UColorado-RFMIP-1-2_none.nc ${RRTMGP_DATA}/rrtmgp-gas-sw-g224.nc
 
 check:
-	@echo "DEBUGING: PYTHON=${PYTHON}"
+	@echo "DEBUGING: PYTHON=$${PYTHON-python}"
 	@echo "DEBUGING: RRTMGP_ROOT=${RRTMGP_ROOT}"
 	$${PYTHON-python} ${RRTMGP_ROOT}/examples/compare-to-reference.py \
 	       --ref_dir ${RRTMGP_DATA}/examples/rfmip-clear-sky/reference --tst_dir ${RRTMGP_ROOT}/examples/rfmip-clear-sky \
