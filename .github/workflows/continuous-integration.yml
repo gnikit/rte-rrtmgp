@@ -56,11 +56,11 @@ jobs:
     - name: Debug
       if: runner.os == 'Windows'
       run: |
-        ls /c/msys64/mingw64/include
+        ls -1F /mingw64
         echo "**********"
-        ls /c/msys64/mingw64/lib
+        ls -1F /mingw64/include
         echo "#################################"
-        find /c/msys64 -name netcdf.mod
+        find /mingw64 -name netcdf.mod
         echo "--------------------------------------"
         pacman -Ql mingw-w64-x86_64-netcdf-fortran
         echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
