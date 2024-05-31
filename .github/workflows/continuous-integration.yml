@@ -145,11 +145,6 @@ jobs:
         echo FCINCLUDE="-I/mingw64/include" >> $GITHUB_ENV
         echo LDFLAGS="-L/mingw64/lib" >> $GITHUB_ENV
         echo LD_LIBRARY_PATH="/mingw64/lib:${LD_LIBRARY_PATH}" >> $GITHUB_ENV
-      # run: |
-      #   echo FCINCLUDE=-I C:\msys64\mingw64\include >> %GITHUB_ENV%
-      #   echo LDFLAGS=-L C:\msys64\mingw64\lib >> %GITHUB_ENV%
-      #   echo LD_LIBRARY_PATH=C:\msys64\mingw64\lib:%LD_LIBRARY_PATH% >> %GITHUB_ENV%
-      
     #
     # Build libraries, examples and tests
     #
