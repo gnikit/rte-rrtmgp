@@ -27,7 +27,7 @@ jobs:
             shell: bash -leo pipefail {0}
             use-cache: true
           - os: windows-latest
-            shell: cmd /C CALL {0}
+            shell: "msys2 -leo pipefail {0}"
             use-cache: false
 
     defaults:
@@ -109,6 +109,7 @@ jobs:
     - name: Setup env variables - Linux
       if: runner.os == 'Linux'
       run: |
+        echo "@@@@@@@@@@@@@@@@@@" $0
         echo FCINCLUDE=-I ${CONDA_PREFIX}/include >> $GITHUB_ENV
         echo LDFLAGS=-L ${CONDA_PREFIX}/lib >> $GITHUB_ENV
         echo LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH} >> $GITHUB_ENV
@@ -116,9 +117,14 @@ jobs:
     - name: Setup env variables - Windows
       if: runner.os == 'Windows'
       run: |
-        echo FCINCLUDE=-I C:\msys64\mingw64\include >> %GITHUB_ENV%
-        echo LDFLAGS=-L C:\msys64\mingw64\lib >> %GITHUB_ENV%
-        echo LD_LIBRARY_PATH=C:\msys64\mingw64\lib:%LD_LIBRARY_PATH% >> %GITHUB_ENV%
+        echo "@@@@@@@@@@@@@@@@@@" $0
+        echo FCINCLUDE="-I C:\msys64\mingw64\include" >> $GITHUB_ENV
+        echo LDFLAGS="-L C:\msys64\mingw64\lib" >> $GITHUB_ENV
+        echo LD_LIBRARY_PATH="C:\msys64\mingw64\lib:${LD_LIBRARY_PATH}" >> $GITHUB_ENV
+      # run: |
+      #   echo FCINCLUDE=-I C:\msys64\mingw64\include >> %GITHUB_ENV%
+      #   echo LDFLAGS=-L C:\msys64\mingw64\lib >> %GITHUB_ENV%
+      #   echo LD_LIBRARY_PATH=C:\msys64\mingw64\lib:%LD_LIBRARY_PATH% >> %GITHUB_ENV%
       
     #
     # Build libraries, examples and tests
