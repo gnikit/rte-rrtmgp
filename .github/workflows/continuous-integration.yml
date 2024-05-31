@@ -94,12 +94,16 @@ jobs:
       uses: conda-incubator/setup-miniconda@v3
       with:
         miniforge-version: latest
-        environment-file: environment-ci.yml
         activate-environment: rte_rrtmgp_ci
+        environment-file: environment-ci.yml
         auto-activate-base: false
         use-mamba: true
         # Use the cache properly:
-        use-only-tar-bz2: ${{ matrix.use-cache }}
+        use-only-tar-bz2: true
+
+    - name: Install NETCDF-Fortran
+      if: runner.os == 'Linux'
+      run: conda install -y -c conda-forge netcdf-fortran
 
     # Setup env variables if Linux and if Windows
     - name: Setup env variables - Linux
