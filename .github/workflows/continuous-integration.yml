@@ -72,7 +72,7 @@ jobs:
         repository: earth-system-radiation/rrtmgp-data
         path: rrtmgp-data
         ref: v1.8.1
-    
+
     # Setup Fortran compiler
     - uses: fortran-lang/setup-fortran@v1.6.1
       id: setup-fortran
@@ -132,16 +132,10 @@ jobs:
     #
     - name: Build and run examples and tests
       run: |
-        set FCINCLUDE=-IC:\msys64\mingw64\include
-        set LDFLAGS=-LC:\msys64\mingw64\lib
-        set LD_LIBRARY_PATH=C:\msys64\mingw64\lib;%LD_LIBRARY_PATH%
         make -j4 tests
     #
     # Compare the results
     #
     - name: Compare the results
       run: |
-        set FCINCLUDE=-I C:\msys64\mingw64\include
-        set LDFLAGS=-L C:\msys64\mingw64\lib
-        set LD_LIBRARY_PATH=C:\msys64\mingw64\lib;%LD_LIBRARY_PATH%
         make -j4 check
