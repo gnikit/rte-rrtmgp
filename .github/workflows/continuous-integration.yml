@@ -128,11 +128,10 @@ jobs:
     #
     - name: Build and run examples and tests
       run: |
+        set ${{ env.FCINCLUDE }}
+        set  ${{ env.LDFLAGS }}
+        set  ${{ env.LD_LIBRARY_PATH }}
         make -j4 tests
-      env:
-        FCINCLUDE: ${{ env.FCINCLUDE }}
-        LDFLAGS: ${{ env.LDFLAGS }}
-        LD_LIBRARY_PATH: ${{ env.LD_LIBRARY_PATH }}
     #
     # Compare the results
     #
