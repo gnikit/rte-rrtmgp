@@ -53,29 +53,6 @@ jobs:
           mingw-w64-x86_64-make
           mingw-w64-x86_64-netcdf-fortran
 
-    - name: Debug
-      if: runner.os == 'Windows'
-      run: |
-        ls -1F /mingw64
-        echo "**********"
-        ls -1F /mingw64/include
-        echo "#################################"
-        find /mingw64 -name netcdf.mod
-        echo "--------------------------------------"
-        pacman -Ql mingw-w64-x86_64-netcdf-fortran
-        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-
-    - name: Debug CMD shell
-      if: runner.os == 'Windows'
-      shell: cmd
-      run: |
-        echo "**********"
-        dir C:\msys64
-        echo "**********"
-        dir C:\msys64\mingw64\include
-        echo "#################################"
-        dir C:\msys64\mingw64\lib
-
     # Relax failure thresholds for single precision
     #
     - name: Relax failure threshold for single precision
