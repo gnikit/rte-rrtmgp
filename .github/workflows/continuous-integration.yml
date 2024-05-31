@@ -64,8 +64,10 @@ jobs:
 
     - name: Debug CMD shell
       if: runner.os == 'Windows'
-      shell: cmd {0}
+      shell: cmd
       run: |
+        echo "**********"
+        dir C:\msys64
         echo "**********"
         dir C:\msys64\mingw64\include
         echo "#################################"
