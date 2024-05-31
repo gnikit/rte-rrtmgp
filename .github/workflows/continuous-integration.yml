@@ -17,10 +17,10 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
-        fpmodel: [DP]
+        fpmodel: [DP, SP]
         toolchain:
-          # - {compiler: gcc, version: 10}
-          # - {compiler: gcc, version: 11}
+          - {compiler: gcc, version: 10}
+          - {compiler: gcc, version: 11}
           - {compiler: gcc, version: 12}
         include:
           - os: ubuntu-latest
