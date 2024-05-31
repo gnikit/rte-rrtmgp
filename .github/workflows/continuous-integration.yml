@@ -16,16 +16,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest]
-        fpmodel: [DP, SP]
+        os: [ubuntu-latest, windows-latest]
+        fpmodel: [DP]
         toolchain:
           # - {compiler: gcc, version: 10}
           # - {compiler: gcc, version: 11}
           - {compiler: gcc, version: 12}
         include:
-          # - os: ubuntu-latest
-          #   shell: bash -leo pipefail {0}
-          #   use-cache: true
+          - os: ubuntu-latest
+            shell: bash -leo pipefail {0}
+            use-cache: true
           - os: windows-latest
             shell: cmd /C CALL {0}
             use-cache: false
@@ -128,8 +128,8 @@ jobs:
     #
     - name: Build and run examples and tests
       run: |
-        set FCINCLUDE=-I C:\msys64\mingw64\include
-        set LDFLAGS=-L C:\msys64\mingw64\lib
+        set FCINCLUDE=-IC:\msys64\mingw64\include
+        set LDFLAGS=-LC:\msys64\mingw64\lib
         set LD_LIBRARY_PATH=C:\msys64\mingw64\lib;%LD_LIBRARY_PATH%
         make -j4 tests
     #
