@@ -155,7 +155,6 @@ jobs:
     #
     - name: Build libraries
       run: |
-        set -eux
         $FC --version
         make -j4 libs
     #
@@ -163,12 +162,10 @@ jobs:
     #
     - name: Build and run examples and tests
       run: |
-        set -eux
         make -j4 tests
     #
     # Compare the results
     #
     - name: Compare the results
       run: |
-        set -eux
         make -j4 check
