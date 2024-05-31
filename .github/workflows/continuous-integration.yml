@@ -28,7 +28,7 @@ jobs:
           #   use-cache: true
           - os: windows-latest
             shell: cmd /C CALL {0}
-            use-cache: true
+            use-cache: false
 
     defaults:
       run:
@@ -100,11 +100,6 @@ jobs:
         use-mamba: true
         # Use the cache properly:
         use-only-tar-bz2: ${{ matrix.use-cache }}
-
-    - name: Manually install conda packages
-      run: |
-        conda config --set use_only_tar_bz2 false
-        conda install -c conda-forge netcdf-fortran
 
     # Setup env variables if Linux and if Windows
     - name: Setup env variables - Linux
