@@ -53,6 +53,24 @@ jobs:
           mingw-w64-x86_64-make
           mingw-w64-x86_64-netcdf-fortran
 
+    - name: Debug
+      if: runner.os == 'Windows'
+      run: |
+        ls /c/msys64/mingw64/include
+        echo "**********"
+        ls /c/msys64/mingw64/lib
+        echo "#################################"
+        find /c/msys64 -name netcdf.mod
+
+    - name: Debug CMD shell
+      if: runner.os == 'Windows'
+      shell: cmd {0}
+      run: |
+        echo "**********"
+        dir C:\msys64\mingw64\include
+        echo "#################################"
+        dir C:\msys64\mingw64\lib
+
     # Relax failure thresholds for single precision
     #
     - name: Relax failure threshold for single precision
@@ -118,8 +136,8 @@ jobs:
       if: runner.os == 'Windows'
       run: |
         echo "@@@@@@@@@@@@@@@@@@" $0
-        echo FCINCLUDE="-I C:\msys64\mingw64\include" >> $GITHUB_ENV
-        echo LDFLAGS="-L C:\msys64\mingw64\lib" >> $GITHUB_ENV
+        echo FCINCLUDE="-I C:\msys64\mingw64\include -I/c/msys64/mingw64/include" >> $GITHUB_ENV
+        echo LDFLAGS="-L C:\msys64\mingw64\lib -L/c/msys64/mingw64/lib" >> $GITHUB_ENV
         echo LD_LIBRARY_PATH="C:\msys64\mingw64\lib:${LD_LIBRARY_PATH}" >> $GITHUB_ENV
       # run: |
       #   echo FCINCLUDE=-I C:\msys64\mingw64\include >> %GITHUB_ENV%
