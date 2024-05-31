@@ -128,16 +128,16 @@ jobs:
     #
     - name: Build and run examples and tests
       run: |
-        set ${{ env.FCINCLUDE }}
-        set  ${{ env.LDFLAGS }}
-        set  ${{ env.LD_LIBRARY_PATH }}
+        set FCINCLUDE=-I C:\msys64\mingw64\include
+        set LDFLAGS=-L C:\msys64\mingw64\lib
+        set LD_LIBRARY_PATH=C:\msys64\mingw64\lib;%LD_LIBRARY_PATH%
         make -j4 tests
     #
     # Compare the results
     #
     - name: Compare the results
-      run: make -j4 check
-      env:
-        FCINCLUDE: ${{ env.FCINCLUDE }}
-        LDFLAGS: ${{ env.LDFLAGS }}
-        LD_LIBRARY_PATH: ${{ env.LD_LIBRARY_PATH }}
+      run: |
+        set FCINCLUDE=-I C:\msys64\mingw64\include
+        set LDFLAGS=-L C:\msys64\mingw64\lib
+        set LD_LIBRARY_PATH=C:\msys64\mingw64\lib;%LD_LIBRARY_PATH%
+        make -j4 check
