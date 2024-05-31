@@ -39,7 +39,6 @@ program optical_prop_unit_tests
   call stop_on_err(ref_1scl%init(band_lims_wvn = reshape([0._wp, 3250._wp], shape = [2, 1]), & 
                                  band_lims_gpt = reshape([1,     1],        shape = [2, 1]), & 
                                  name = "Gray atmosphere"))
-  print*, "-------------DEBUGGING-------------"
   call stop_on_err(ref_1scl%alloc_1scl(ncol, nlay))
   print '("  Problem size: (ncol, nlay, nband, ngpt): ", 4(i2, 2x))', & 
     ref_1scl%get_ncol(), ref_1scl%get_nlay(), ref_1scl%get_nband(), ref_1scl%get_ngpt()
