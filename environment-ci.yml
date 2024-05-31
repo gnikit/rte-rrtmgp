@@ -13,4 +13,3 @@ dependencies:
   - matplotlib
   - seaborn
   - colorcet
-  - netcdf-fortran

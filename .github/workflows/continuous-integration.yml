@@ -28,7 +28,7 @@ jobs:
           #   use-cache: true
           - os: windows-latest
             shell: cmd /C CALL {0}
-            use-cache: false
+            use-cache: true
 
     defaults:
       run:
@@ -101,6 +101,9 @@ jobs:
         # Use the cache properly:
         use-only-tar-bz2: ${{ matrix.use-cache }}
 
+    - name: Manually install conda packages
+      run: conda install -c conda-forge netcdf-fortran
+
     # Setup env variables if Linux and if Windows
     - name: Setup env variables - ${{ runner.os }}
       if: runner.os == 'Linux'
@@ -111,6 +114,7 @@ jobs:
 
     - name: Setup env variables - ${{ runner.os }}
       if: runner.os == 'Windows'
+      shell: ${{ matrix.shell }}
       run: |
         echo FCINCLUDE=-I C:\msys64\mingw64\include >> %GITHUB_ENV%
         echo LDFLAGS=-L C:\msys64\mingw64\lib >> %GITHUB_ENV%
@@ -127,6 +131,7 @@ jobs:
     # Run examples and tests
     #
     - name: Build and run examples and tests
+      shell: ${{ matrix.shell }}
       run: |
         make -j4 tests
     #
