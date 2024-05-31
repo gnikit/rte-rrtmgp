@@ -51,6 +51,7 @@ jobs:
         path-type: inherit
         install: >-
           mingw-w64-x86_64-make
+          mingw-w64-x86_64-gcc-fortran
           mingw-w64-x86_64-netcdf-fortran
 
     # Relax failure thresholds for single precision
