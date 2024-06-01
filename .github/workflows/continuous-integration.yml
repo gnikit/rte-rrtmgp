@@ -44,6 +44,13 @@ jobs:
       FAILURE_THRESHOLD: 7.e-4
     steps:
 
+    # Setup Fortran compiler
+    - uses: fortran-lang/setup-fortran@v1.6.1
+      id: setup-fortran
+      with:
+        compiler: ${{ matrix.toolchain.compiler }}
+        version: ${{ matrix.toolchain.version }}
+
     - if: runner.os == 'Windows'
       uses: msys2/setup-msys2@v2
       with:
@@ -72,13 +79,6 @@ jobs:
         repository: earth-system-radiation/rrtmgp-data
         path: rrtmgp-data
         ref: v1.8.1
-
-    # Setup Fortran compiler
-    - uses: fortran-lang/setup-fortran@v1.6.1
-      id: setup-fortran
-      with:
-        compiler: ${{ matrix.toolchain.compiler }}
-        version: ${{ matrix.toolchain.version }}
     #
     # Cache Conda packages
     #
