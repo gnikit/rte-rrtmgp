@@ -63,10 +63,13 @@ jobs:
     - name: Debugging
       if: runner.os == 'Windows'
       run: |
+        echo "@@@@@: /"
         ls -1F /
-        echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-        ls -1F /mingw64/bin
-        echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        echo "@@@@@: /c"
+        ls -1F /c
+        echo "@@@@@: /c/ProgramData/Chocolatey/lib/mingw/"
+        ls -1F /c/ProgramData/Chocolatey/lib/mingw/
+        echo "@@@@@: /c/ProgramData/Chocolatey/bin/"
         ls -1F /c/ProgramData/chocolatey/bin
         echo "=================================================="
         find /mingw64 -name 'libgfortran*.dll'
