@@ -67,9 +67,9 @@ jobs:
         ls -1F /
         echo "@@@@@: /c"
         ls -1F /c
-        echo "@@@@@: /c/ProgramData/Chocolatey/lib/mingw/"
-        ls -1F /c/ProgramData/Chocolatey/lib/mingw/
-        echo "@@@@@: /c/ProgramData/Chocolatey/bin/"
+        echo "@@@@@: /c/ProgramData/chocolatey/lib/mingw/"
+        ls -1F /c/ProgramData/chocolatey/lib/mingw/
+        echo "@@@@@: /c/ProgramData/chocolatey/bin/"
         ls -1F /c/ProgramData/chocolatey/bin
         echo "=================================================="
         find /mingw64 -name 'libgfortran*.dll'
