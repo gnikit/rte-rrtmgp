@@ -44,13 +44,6 @@ jobs:
       FAILURE_THRESHOLD: 7.e-4
     steps:
 
-    # Setup Fortran compiler
-    - uses: fortran-lang/setup-fortran@v1.6.1
-      id: setup-fortran
-      with:
-        compiler: ${{ matrix.toolchain.compiler }}
-        version: ${{ matrix.toolchain.version }}
-
     - if: runner.os == 'Windows'
       uses: msys2/setup-msys2@v2
       with:
@@ -59,6 +52,13 @@ jobs:
         install: >-
           mingw-w64-x86_64-make
           mingw-w64-x86_64-netcdf-fortran
+
+    # Setup Fortran compiler
+    - uses: fortran-lang/setup-fortran@v1.6.1
+      id: setup-fortran
+      with:
+        compiler: ${{ matrix.toolchain.compiler }}
+        version: ${{ matrix.toolchain.version }}
 
     - name: Debugging
       if: runner.os == 'Windows'
