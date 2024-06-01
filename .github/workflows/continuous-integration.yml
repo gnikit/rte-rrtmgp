@@ -69,7 +69,11 @@ jobs:
         echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
         ls -1F /c/ProgramData/chocolatey/bin
         echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-        find / -name 'libgfortran*.dll'
+        find /c -name 'libgfortran*.dll'
+        echo "=================================================="
+        find /usr -name 'libgfortran*.dll'
+        echo "=================================================="
+        find /mingw64 -name 'libgfortran*.dll'
 
     # Relax failure thresholds for single precision
     #
