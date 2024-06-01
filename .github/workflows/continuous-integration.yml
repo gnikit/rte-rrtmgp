@@ -60,6 +60,17 @@ jobs:
           mingw-w64-x86_64-make
           mingw-w64-x86_64-netcdf-fortran
 
+    - name: Debugging
+      if: runner.os == 'Windows'
+      run: |
+        ls -1F /
+        echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        ls -1F /mingw64/bin
+        echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        ls -1F /c/ProgramData/chocolatey/bin
+        echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+        find / -name 'libgfortran*.dll'
+
     # Relax failure thresholds for single precision
     #
     - name: Relax failure threshold for single precision
