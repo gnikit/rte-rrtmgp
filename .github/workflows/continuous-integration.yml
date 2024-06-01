@@ -68,10 +68,6 @@ jobs:
         ls -1F /mingw64/bin
         echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
         ls -1F /c/ProgramData/chocolatey/bin
-        echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-        find /c -name 'libgfortran*.dll'
-        echo "=================================================="
-        find /usr -name 'libgfortran*.dll'
         echo "=================================================="
         find /mingw64 -name 'libgfortran*.dll'
 
