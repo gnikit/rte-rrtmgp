@@ -29,6 +29,11 @@ jobs:
           - os: windows-latest
             shell: "msys2 -leo pipefail {0}"
             make: mingw32-make.exe
+        exclude:
+          - os: windows-latest
+            toolchain:
+              compiler: gcc
+              version: 12
 
     defaults:
       run:
