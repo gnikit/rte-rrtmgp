@@ -112,7 +112,6 @@ jobs:
     - name: Setup env variables - Linux
       if: runner.os == 'Linux'
       run: |
-        echo "@@@@@@@@@@@@@@@@@@" $0
         echo FCINCLUDE=-I ${CONDA_PREFIX}/include >> $GITHUB_ENV
         echo LDFLAGS=-L ${CONDA_PREFIX}/lib >> $GITHUB_ENV
         echo LD_LIBRARY_PATH=${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH} >> $GITHUB_ENV
@@ -120,7 +119,6 @@ jobs:
     - name: Setup env variables - Windows
       if: runner.os == 'Windows'
       run: |
-        echo "@@@@@@@@@@@@@@@@@@" $0
         echo FCINCLUDE="-I/mingw64/include" >> $GITHUB_ENV
         echo LDFLAGS="-L/mingw64/lib" >> $GITHUB_ENV
         echo LD_LIBRARY_PATH="/mingw64/lib:/mingw64/bin:${LD_LIBRARY_PATH}" >> $GITHUB_ENV
