@@ -28,7 +28,7 @@ jobs:
             shell: bash -leo pipefail {0}
             make: make
           - os: windows-latest
-            shell: "msys2 -leo pipefail {0}"
+            shell: "bash -leo pipefail {0}"
             make: mingw32-make.exe
 
     defaults:
