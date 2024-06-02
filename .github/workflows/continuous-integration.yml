@@ -38,7 +38,7 @@ jobs:
 
     env:
       # Core variables:
-      FCFLAGS: "-fPIC -fPIE -fcheck=all -ffree-line-length-none -m64 -std=f2008 -march=native -fbounds-check -fmodule-private -fimplicit-none -finit-real=nan -g -DRTE_USE_CBOOL -DRTE_USE_${{ matrix.fpmodel }}"
+      FCFLAGS: "-fPIC -fPIE -fcheck=all -fbacktrace -ffree-line-length-none -m64 -std=f2008 -march=native -fbounds-check -fmodule-private -fimplicit-none -finit-real=nan -g -DRTE_USE_CBOOL -DRTE_USE_${{ matrix.fpmodel }}"
       # Make variables:
       RRTMGP_ROOT: ${{ github.workspace }}
       RRTMGP_DATA: ${{ github.workspace }}/rrtmgp-data
@@ -61,18 +61,6 @@ jobs:
       with:
         compiler: ${{ matrix.toolchain.compiler }}
         version: ${{ matrix.toolchain.version }}
-
-    - name: Debugging
-      if: runner.os == 'Windows'
-      run: |
-        echo "=================================================="
-        which $FC
-        find /mingw64 -name 'libgfortran*.dll'
-        echo "@@@@@: /mingw64"
-        ls -1F /mingw64
-        echo "@@@@@: /mingw64/lib"
-        ls -1FR /mingw64/lib
-        echo "=================================================="
 
     # Relax failure thresholds for single precision
     #
