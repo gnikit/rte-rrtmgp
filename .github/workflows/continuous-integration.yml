@@ -135,8 +135,7 @@ jobs:
         echo "@@@@@@@@@@@@@@@@@@" $0
         echo FCINCLUDE="-I/mingw64/include" >> $GITHUB_ENV
         echo LDFLAGS="-L/mingw64/lib" >> $GITHUB_ENV
-        echo LD_LIBRARY_PATH="/c/ProgramData/chocolatey/bin:/c/ProgramData/chocolatey/lib:/mingw64/lib:/mingw64/bin:${LD_LIBRARY_PATH}" >> $GITHUB_ENV
-        # echo PATH="/mingw64/bin:${PATH}" >> $GITHUB_ENV
+        echo LD_LIBRARY_PATH="/mingw64/lib:/mingw64/bin:${LD_LIBRARY_PATH}" >> $GITHUB_ENV
     #
     # Build libraries, examples and tests
     #
