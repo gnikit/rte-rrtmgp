@@ -26,9 +26,11 @@ jobs:
           - os: ubuntu-latest
             shell: bash -leo pipefail {0}
             use-cache: true
+            make: make
           - os: windows-latest
             shell: "msys2 -leo pipefail {0}"
             use-cache: false
+            make: mingw32-make.exe
 
     defaults:
       run:
@@ -145,16 +147,16 @@ jobs:
     - name: Build libraries
       run: |
         $FC --version
-        make -j4 libs
+        ${{ matrix.make }} -j4 libs
     #
     # Run examples and tests
     #
     - name: Build and run examples and tests
       run: |
-        make -j4 tests
+        ${{ matrix.make }} -j4 tests
     #
     # Compare the results
     #
     - name: Compare the results
       run: |
-        make -j4 check
+        ${{ matrix.make }} -j4 check
