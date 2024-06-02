@@ -63,14 +63,18 @@ jobs:
     - name: Debugging
       if: runner.os == 'Windows'
       run: |
-        echo "@@@@@: /"
-        ls -1F /
-        echo "@@@@@: /c"
-        ls -1F /c
+        echo "@@@@@: /mingw64"
+        ls -1F //mingw64
         echo "@@@@@: /c/ProgramData/chocolatey"
-        ls -FR /c/ProgramData/chocolatey
+        ls -FR /c/ProgramData/chocolatey/bin
+        echo "@@@@@@@@"
+        ls -FR /c/ProgramData/chocolatey/lib
+        echo "@@@@@@@@"
+        ls -FR /c/ProgramData/chocolatey/include
         echo "=================================================="
-        find /mingw64 -name 'libgfortran*.dll'
+        # find /mingw64 -name 'libgfortran*.dll'
+        which make
+        which mingw32-make
 
     # Relax failure thresholds for single precision
     #
