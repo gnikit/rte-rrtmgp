@@ -67,6 +67,7 @@ jobs:
       run: |
         echo "=================================================="
         which $FC
+        find /mingw64 -name 'libgfortran*.dll'
         echo "@@@@@: /mingw64"
         ls -1F /mingw64
         echo "@@@@@: /mingw64/lib"
