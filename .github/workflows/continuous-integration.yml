@@ -67,12 +67,14 @@ jobs:
       run: |
         echo "@@@@@: /mingw64"
         ls -1F /mingw64
-        echo "@@@@@: /c/ProgramData/chocolatey"
-        ls -FR /c/ProgramData/chocolatey/bin
-        echo "@@@@@@@@"
-        ls -FR /c/ProgramData/chocolatey/lib
-        echo "@@@@@@@@"
-        ls -FR /c/ProgramData/chocolatey/include
+        echo "@@@@@: /mingw64/libexec"
+        ls -1FR /mingw64/libexec
+        # echo "@@@@@: /c/ProgramData/chocolatey"
+        # ls -FR /c/ProgramData/chocolatey/bin
+        # echo "@@@@@@@@"
+        # ls -FR /c/ProgramData/chocolatey/lib
+        # echo "@@@@@@@@"
+        # ls -FR /c/ProgramData/chocolatey/include
         echo "=================================================="
         # find /mingw64 -name 'libgfortran*.dll'
         which make
