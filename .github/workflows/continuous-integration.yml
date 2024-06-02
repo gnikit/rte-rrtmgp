@@ -65,6 +65,8 @@ jobs:
     - name: Debugging
       if: runner.os == 'Windows'
       run: |
+        echo "=================================================="
+        which $FC
         echo "@@@@@: /mingw64"
         ls -1F /mingw64
         echo "@@@@@: /mingw64/libexec"
