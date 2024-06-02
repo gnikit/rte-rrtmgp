@@ -26,11 +26,9 @@ jobs:
         include:
           - os: ubuntu-latest
             shell: bash -leo pipefail {0}
-            use-cache: true
             make: make
           - os: windows-latest
             shell: "msys2 -leo pipefail {0}"
-            use-cache: false
             make: mingw32-make.exe
 
     defaults:
