@@ -69,18 +69,9 @@ jobs:
         which $FC
         echo "@@@@@: /mingw64"
         ls -1F /mingw64
-        echo "@@@@@: /mingw64/libexec"
-        ls -1FR /mingw64/libexec
-        # echo "@@@@@: /c/ProgramData/chocolatey"
-        # ls -FR /c/ProgramData/chocolatey/bin
-        # echo "@@@@@@@@"
-        # ls -FR /c/ProgramData/chocolatey/lib
-        # echo "@@@@@@@@"
-        # ls -FR /c/ProgramData/chocolatey/include
+        echo "@@@@@: /mingw64/lib"
+        ls -1FR /mingw64/lib
         echo "=================================================="
-        # find /mingw64 -name 'libgfortran*.dll'
-        # which make
-        # which mingw32-make
 
     # Relax failure thresholds for single precision
     #
